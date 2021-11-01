@@ -4,7 +4,7 @@ import requests
 main_api = "https://www.mapquestapi.com/directions/v2/route?" #Declaring the mapquest api.
 key = "FTz1C80FGGEcX94YgmGdIunBTet31wex" #Declaring the api key.
 
-def convert(value): #Value conversion for distance. 
+def convert(value): #Value conversion for distance.
 
     if distUnit == "m" or distUnit == "meter" or distUnit == "Meter": 
         distance = value * 1610 
@@ -17,7 +17,7 @@ def convert(value): #Value conversion for distance.
 
 while True:
 
-    orig = input("Starting Location: ") #User input for starting location or the origin.
+    orig = input("Starting Location: ") #User input for starting location or origin.
     if orig == "quit" or orig == "q":
         break
 
@@ -38,7 +38,7 @@ while True:
         print("Please try again.")
         break
 
-    rType = input("Select preferred route type (FASTEST,SHORTEST, or BICYCLE): ") #User input for the desired route type.
+    rType = input("Select preffered route type (FASTEST,SHORTEST, or BICYCLE): ") #User input for the desired route type.
     if rType =="quit" or rType =="q":
         break
     elif rType =="FASTEST" or rType =="Fastest" or rType == "fastest":
@@ -51,7 +51,7 @@ while True:
         print("Please try again.")
         break
         
-    url = main_api + urllib.parse.urlencode({"key": key, "from":orig,"routeType": routeType ,"to":dest}) #Declaring the url.
+    url = main_api + urllib.parse.urlencode({"key": key, "from":orig,"routeType": routeType ,"to":dest, "hasTollRoad":False}) #Delcaring the URL.
     print("URL: " + (url))
     json_data = requests.get(url).json() #Requesting the url in json format.
     json_status = json_data["info"]["statuscode"] #Getting the status code. 
@@ -69,8 +69,9 @@ while True:
         for each in json_data["route"]["legs"][0]["maneuvers"]:
 
             distance = convert(each["distance"]) #Conversion of distance.
+            est_time = each["formattedTime"]  #Declaring time format.
 
-            print((each["narrative"]) + " (" + str("{:.2f}".format(distance) + " " + unit + ")")) #printing each narrative.
+            print((each["narrative"]) + " || (Distance: " + str("{:.2f}".format(distance)) + " " + unit + ") || (Estimated Time: " + est_time + ")") #Printing each narrative.
 
         print("=============================================\n")
 

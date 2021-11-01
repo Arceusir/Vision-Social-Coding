@@ -4,6 +4,17 @@ import requests
 main_api = "https://www.mapquestapi.com/directions/v2/route?" 
 key = "FTz1C80FGGEcX94YgmGdIunBTet31wex"
 
+def convert(value): 
+
+    if distUnit == "m" or distUnit == "meter" or distUnit == "Meter": 
+        distance = value * 1610 
+    elif distUnit == "km" or distUnit == "kilometer" or distUnit == "Kilometer": 
+        distance = value * 1.61 
+    elif distUnit == "mi" or distUnit == "miles" or distUnit == "Miles": 
+        distance = value 
+
+    return distance 
+
 while True:
     orig = input("Starting Location: ")
     if orig == "quit" or orig == "q":
@@ -11,6 +22,7 @@ while True:
     dest = input("Destination: ")
     if dest == "quit" or dest == "q":
          break
+        
     url = main_api + urllib.parse.urlencode({"key": key, "from":orig, "to":dest})
     print("URL: " + (url))
     json_data = requests.get(url).json()

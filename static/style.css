@@ -1,0 +1,80 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: url(../static/background.png);
+    background-size: cover;
+    background-attachment: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #333;
+	line-height: 1.6;
+}
+
+.container {
+	width: 50%;
+	margin: 100px auto;
+	overflow: auto;
+    background: white;
+	padding: 40px;
+}
+
+h1 {
+	color: #777;
+	margin-top: 15px;
+}
+
+h3 {
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+h5 {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+img {
+	width: 100%;
+}
+
+.message {
+	text-align: center;
+	padding: 5px;
+	border: #ccc dotted 2px;
+	margin-top: 2rem;
+}
+
+.logo {
+	width: 300px;
+	display: block;
+	margin: auto;
+}
+
+.form-group {
+	margin: 1rem 0;
+}
+
+input[type='text'],
+select,
+textarea {
+	display: block;
+	width: 100%;
+	padding: 0.4rem;
+	font-size: 1.2rem;
+	border: 1px solid #ccc;
+}
+
+.btn {
+	display: block;
+	width: 100%;
+	background: #333;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	outline: none;
+	margin-top: 1rem;
+}

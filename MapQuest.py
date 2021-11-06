@@ -38,7 +38,11 @@ while True:
         print("Please try again.")
         break
 
+<<<<<<< HEAD
     rType = input("Select preffered route type (FASTEST,SHORTEST, or BICYCLE): ") #User input for the desired route type.
+=======
+    rType = input("Select preferred route type (FASTEST,SHORTEST, or BICYCLE): ") #User input for the desired route type.
+>>>>>>> 9f23d7b1df00a3225b6e902fc67a7176c989d981
     if rType =="quit" or rType =="q":
         break
     elif rType =="FASTEST" or rType =="Fastest" or rType == "fastest":
@@ -50,11 +54,24 @@ while True:
     else:
         print("Please try again.")
         break
+<<<<<<< HEAD
         
     url = main_api + urllib.parse.urlencode({"key": key, "from":orig,"routeType": routeType ,"to":dest, "hasTollRoad":False}) #Delcaring the URL.
+=======
+
+    avoidFeature = input("[Route Options] What do you want to avoid? (Limited Access Highway | Toll Road | Ferry | Unpaved | Approximate Seasonal Closure | Country Border Crossing | Bridge | Tunnel | None): ")
+    
+    #Create query strings
+    if avoidFeature = "None":
+        url = main_api + urllib.parse.urlencode({"key": key, "from":orig,"routeType": routeType ,"to":dest}) #Declaring the URL.
+    
+    else:
+        url = main_api + urllib.parse.urlencode({"key": key, "from":orig,"routeType": routeType ,"to":dest, "avoids":avoidFeature}) #Declaring the URL.
+    
+>>>>>>> 9f23d7b1df00a3225b6e902fc67a7176c989d981
     print("URL: " + (url))
-    json_data = requests.get(url).json()
-    json_status = json_data["info"]["statuscode"]
+    json_data = requests.get(url).json() #Requesting the url in json format.
+    json_status = json_data["info"]["statuscode"] #Getting the status code. 
     if json_status == 0:
 
         print("API Status: " + str(json_status) + " = A successful route call.\n")

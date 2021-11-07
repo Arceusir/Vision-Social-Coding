@@ -1,0 +1,4 @@
+CONTAINER ID        IMAGE                 COMMAND                  CREATED              STATUS                          PORTS                               NAMES
+2a124c481091        app                   "/bin/sh -c 'python3…"   About a minute ago   Exited (1) About a minute ago                                       running
+87f1f100c4ce        8a2ca81d4ab2          "/bin/sh -c 'python …"   13 days ago          Up 13 days                      0.0.0.0:5050->5050/tcp              samplerunning
+b855faa17369        jenkins/jenkins:lts   "/sbin/tini -- /usr/…"   13 days ago          Up 13 days                      0.0.0.0:8080->8080/tcp, 50000/tcp   jenkins_server

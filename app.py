@@ -34,29 +34,50 @@ def route():
         route_type = request.form['route_type']
         route_avoid = request.form['route_avoid']
 
-        if route_avoid == "None":
-            url = main_api + urllib.parse.urlencode({"key": key, 
-                                                "from": starting_point,
-                                                "routeType": route_type,
-                                                "to": destination_point}) 
+        if starting_point == '' or destination_point == '':
+
+            return render_template('home.html', error_message = 'Please enter the required fields!',
+                                                starting_point = starting_point,
+                                                destination_point = destination_point,
+                                                route_type = route_type,
+                                                route_avoid = route_avoid)
+
+        elif distance_unit == '' or route_type == '' or route_avoid == '':
+
+            return render_template('home.html', error_message = 'Select all the route options!',
+                                                starting_point = starting_point,
+                                                destination_point = destination_point,
+                                                route_type = route_type,
+                                                route_avoid = route_avoid)
+
         else:
-            url = main_api + urllib.parse.urlencode({"key": key, 
-                                                "from": starting_point,
-                                                "routeType": route_type,
-                                                "to": destination_point, 
-                                                "avoids": route_avoid}) 
 
-        json_data = requests.get(url).json()
+            if route_avoid == "None":
+                
+                url = main_api + urllib.parse.urlencode({"key": key, 
+                                                        "from": starting_point,
+                                                        "routeType": route_type,
+                                                        "to": destination_point}) 
+            else:
+                
+                url = main_api + urllib.parse.urlencode({"key": key, 
+                                                        "from": starting_point,
+                                                        "routeType": route_type,
+                                                        "to": destination_point, 
+                                                        "avoids": route_avoid}) 
 
-        json_status = json_data["info"]["statuscode"]
+            json_data = requests.get(url).json()
 
-        duration = json_data["route"]["formattedTime"]
-        distance = str("{:.2f}".format(convert(json_data["route"]["distance"], distance_unit)))
-        fuel = str("{:.2f}".format((json_data["route"]["fuelUsed"])*3.78))
+            json_status = json_data["info"]["statuscode"]
 
-        maneuvers = json_data["route"]["legs"][0]["maneuvers"]
+            
+            duration = json_data["route"]["formattedTime"]
+            distance = str("{:.2f}".format(convert(json_data["route"]["distance"], distance_unit)))
+            fuel = str("{:.2f}".format((json_data["route"]["fuelUsed"])*3.78))
 
-        return render_template('output.html', starting_point = starting_point, 
+            maneuvers = json_data["route"]["legs"][0]["maneuvers"]
+
+            return render_template('output.html', starting_point = starting_point, 
                                                 destination_point = destination_point,
                                                 duration = duration,
                                                 distance = distance,
@@ -66,6 +87,7 @@ def route():
                                                 maneuvers = maneuvers)
 
     return render_template('home.html')
+
 
 if __name__ == '__main__':
     app.run()

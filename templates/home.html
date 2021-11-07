@@ -16,6 +16,12 @@
         <div class = "container">
             <img src = "../static/logo.png" alt ="RoadMap" class = "logo" />
 
+            {% if error_message != '' %}
+
+                <p class = "message"> {{ error_message | safe }}</p>
+
+            {% endif %}
+
             <form action = "/route" method = "POST">
 
             <div class = "form-group">
@@ -26,6 +32,7 @@
                     type = "text"
                     name = "starting_point"
                     placeholder = "Starting address location"
+                    value = "{{ starting_point }}"
                 />
           
             </div>
@@ -38,6 +45,7 @@
                     type = "text"
                     name = "destination_point"
                     placeholder = "Destination address location"
+                    value = "{{ destination_point }}"
                 />
           
             </div>

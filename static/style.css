@@ -17,31 +17,14 @@ body {
 	width: 50%;
 	margin: 100px auto;
 	overflow: auto;
-<<<<<<< HEAD
-    background: white;
-	padding: 40px;
-}
-
-h1 {
-	color: #777;
-	margin-top: 15px;
-=======
     background: #98D7C2;
 	padding: 40px;
 	border-radius: 10px;
->>>>>>> 9f23d7b1df00a3225b6e902fc67a7176c989d981
 }
 
 h3 {
 	margin-top: 15px;
 	margin-bottom: 10px;
-<<<<<<< HEAD
-}
-
-h5 {
-	margin-top: 15px;
-	margin-bottom: 15px;
-=======
 	color: #DB1F48;
 }
 
@@ -50,7 +33,6 @@ h5 {
 	margin-top: 15px;
 	margin-bottom: 15px;
 	color: black;
->>>>>>> 9f23d7b1df00a3225b6e902fc67a7176c989d981
 }
 
 img {
@@ -81,25 +63,12 @@ textarea {
 	width: 100%;
 	padding: 0.4rem;
 	font-size: 1.2rem;
-<<<<<<< HEAD
-	border: 1px solid #ccc;
-=======
 	border-radius: 1px solid #ccc;
->>>>>>> 9f23d7b1df00a3225b6e902fc67a7176c989d981
 }
 
 .btn {
 	display: block;
 	width: 100%;
-<<<<<<< HEAD
-	background: #333;
-	color: #fff;
-	padding: 10px 20px;
-	border: none;
-	cursor: pointer;
-	outline: none;
-	margin-top: 1rem;
-=======
 	background:#29A0B1;
 	color: #fff;
 	font-size: 20px;
@@ -113,5 +82,4 @@ textarea {
 }	
 .btn:hover{
 	background-color: #167D7F;
->>>>>>> 9f23d7b1df00a3225b6e902fc67a7176c989d981
 }

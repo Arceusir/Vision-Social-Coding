@@ -52,7 +52,6 @@ while True:
         print("Please try again.")
         break
         
-    url = main_api + urllib.parse.urlencode({"key": key, "from":orig,"routeType": routeType ,"to":dest, "hasTollRoad":False}) #Delcaring the URL.
 
     avoidFeature = input("[Route Options] What do you want to avoid? (Limited Access Highway | Toll Road | Ferry | Unpaved | Approximate Seasonal Closure | Country Border Crossing | Bridge | Tunnel | None): ")
     

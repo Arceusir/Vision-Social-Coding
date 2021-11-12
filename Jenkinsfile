@@ -11,21 +11,21 @@ pipeline {
             
             steps{
             catchError(buildResult: 'SUCCESS') {          
-                sh 'docker stop samplerunning'          
-                sh 'docker rm samplerunning'       
+                sh 'docker stop apprunning'          
+                sh 'docker rm apprunning'       
             }   
             }
         }   
         
         stage('Build') {       
             steps{
-            build 'BuildAppJob'   
+            build 'build'   
             }
         }   
         
         stage('Results') {   
             steps{    
-            build 'TestAppJob'   
+            build 'test'   
             }
         }
     }
